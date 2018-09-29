@@ -58,10 +58,12 @@ docker-compose -f docker-compose.yml up
 ```
 
 ### Access outside your host
-On Windows 10, open up port 1433 IN/OUT
-On Windows Server, open up port 1433 IN/OUT
-On Azure NSG, open up port 1433 IN/OUT
+
+- On Windows 10, open up port 1433 IN/OUT
+- On Windows Server, open up port 1433 IN/OUT
+- On Azure NSG, open up port 1433 IN/OUT
 
 ### References
-https://hub.docker.com/r/microsoft/mssql-tools/
-https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker
+
+- https://hub.docker.com/r/microsoft/mssql-tools/
+- https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-docker
