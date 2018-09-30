@@ -22,7 +22,7 @@ docker exec -it 8cd0b350ccb5 "bash"
 ```
 
 ```bash
-/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Denmark2018'
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'MyD3f@ultP@ssw0rd1357!'
 ```
 
 ```bash
