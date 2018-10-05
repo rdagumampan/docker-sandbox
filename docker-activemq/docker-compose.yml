@@ -1,0 +1,47 @@
+version: "2.1"
+services:
+
+  portainer:
+    image: portainer/portainer:latest
+    expose:
+      - "9000"
+    ports:
+      - "9000:9000"
+    volumes:
+      - "C:/ProgramData/Portainer portainer/portainer"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: -Des.node.name=elasticsearch -Des.cluster.name=elasticsearch -Des.transport.tcp.port=9300 -Des.http.port=9200 -Des.discovery.zen.ping.multicast.enabled=false
+
+  activemq:
+    image: webcenter/activemq:latest
+    environment:
+      ACTIVEMQ_CONFIG_NAME: "amqp-srv1"
+      ACTIVEMQ_CONFIG_DEFAULTACCOUNT: "false"
+      ACTIVEMQ_ADMIN_LOGIN: "admin"
+      ACTIVEMQ_ADMIN_PASSWORD: "admin"
+      ACTIVEMQ_USERS_myproducer: "producerpassword" 
+      ACTIVEMQ_GROUPS_writes: "myproducer"
+      ACTIVEMQ_USERS_myconsumer: "consumerpassword"
+      ACTIVEMQ_GROUPS_reads: "myconsumer"
+      ACTIVEMQ_JMX_user1_role: "readwrite"
+      ACTIVEMQ_JMX_user1_password: "jmx_password"
+      ACTIVEMQ_JMX_user2_role: "read"
+      ACTIVEMQ_JMX_user2_password: "jmx2_password"
+      ACTIVEMQ_CONFIG_TOPICS_topic1: "mytopic1" 
+      ACTIVEMQ_CONFIG_TOPICS_topic2: "mytopic2"
+      ACTIVEMQ_CONFIG_QUEUES_queue1: "myqueue1" 
+      ACTIVEMQ_CONFIG_QUEUES_queue2: "myqueue2"
+      ACTIVEMQ_CONFIG_MINMEMORY: "1024" 
+      ACTIVEMQ_CONFIG_MAXMEMORY: "4096"
+      ACTIVEMQ_CONFIG_SCHEDULERENABLED: "true"
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "61613:61613"
